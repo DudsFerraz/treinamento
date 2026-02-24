@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Jogador;
+
+class JogadoresController extends Controller
+{
+    public function index()
+    {
+        $jogadores = Jogador::all();
+        return view('jogadores.index', ['jogadores' => $jogadores]);
+    }
+
+    public function create()
+    {
+        return view('jogadores.form');
+    }
+
+    public function store(StoreJogadorRequest $request)
+    {
+        $jogador = Jogador::create($request->validated());
+        return redirect()->route('jogadores.show', $jogador)->with('sucesso', 'Jogador criado!');
+    }
+
+    public function show(Jogador $jogador)
+    {
+        return view('jogadores.show', ['jogador' => $jogador]);
+    }
+
+
+    public function edit(Jogador $jogador)
+    {
+        return view('jogadores.form', ['jogador' => $jogador]);
+    }
+
+    public function update(UpdateJogadorRequest $request, Jogador $jogador)
+    {
+        $jogador->update($request->validated());
+        return redirect()->route('jogadores.show', $jogador)->with('sucesso', 'Jogador atualizado!');
+    }
+
+    public function destroy(Jogador $jogador)
+    {
+        $jogador->delete();
+        return redirect()->route('jogadores.index')->with('sucesso', 'Jogador deletado!');
+    }
+}
