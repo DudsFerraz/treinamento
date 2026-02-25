@@ -37,6 +37,6 @@ class JogadorSeeder extends Seeder
         ];
         Jogador::create($jogador);
 
-        $jogadores = Jogador::factory()->count(77)->create();
+        $jogadores = Jogador::factory()->count(5)->create();
     }
 }
