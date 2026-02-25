@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Jogadores</title> 
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-100 min-h-screen font-sans p-8">
+@extends('layouts.app')
 
+@section('styles')
+    @parent
+    <script src="https://cdn.tailwindcss.com"></script> 
+@endsection
+
+
+@section('content')
     <div class="max-w-7xl mx-auto mb-8 text-center">
         <h1 class="text-4xl font-black text-slate-800 uppercase tracking-tight">Elenco de Jogadores</h1>
         <p class="text-slate-500 mt-2">Total de jogadores cadastrados: {{ $jogadores->count() }}</p>
@@ -61,6 +60,4 @@
             Nenhum jogador cadastrado no momento.
         </div>
     @endif
-
-</body>
-</html>
+@endsection
