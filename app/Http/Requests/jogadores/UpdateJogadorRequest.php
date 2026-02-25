@@ -28,4 +28,13 @@ class UpdateJogadorRequest extends FormRequest
             'numero'  => 'required|integer|min:1|max:99',
         ];
     }
+
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'nome' => trim($this->nome),
+            'time' => trim($this->time),
+            'posicao' => strtoupper(trim($this->posicao)),
+        ]);
+    }
 }
