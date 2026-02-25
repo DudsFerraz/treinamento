@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Jogador;
+use App\Http\Requests\jogadores\StoreJogadorRequest;
+use App\Http\Requests\jogadores\UpdateJogadorRequest;
 
 class JogadoresController extends Controller
 {

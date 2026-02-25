@@ -38,7 +38,7 @@
         </div>
 
         <div class="bg-slate-50 p-4 text-center border-t border-slate-100">
-            <a href="{{url('/')}}" class="text-sm font-semibold text-emerald-600 hover:text-emerald-800 transition-colors">
+            <a href="{{url('/jogadores')}}" class="text-sm font-semibold text-emerald-600 hover:text-emerald-800 transition-colors">
                 &larr; Voltar para a página inicial
             </a>
         </div>

@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="bg-slate-50 p-3 text-center border-t border-slate-100 mt-auto">
-                    <a href="/jogadores/{{ $jogador->id }}" class="text-xs font-bold text-emerald-600 hover:text-emerald-800 transition-colors uppercase tracking-wider block w-full">
+                    <a href="{{ url('/jogadores/' . $jogador->id) }}" class="text-xs font-bold text-emerald-600 hover:text-emerald-800 transition-colors uppercase tracking-wider block w-full">
                         Ver Perfil Completo &rarr;
                     </a>
                 </div>
