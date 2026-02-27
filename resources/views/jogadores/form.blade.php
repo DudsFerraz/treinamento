@@ -62,11 +62,12 @@
                         <select name="posicao" id="posicao"
                             class="form-control form-control-lg text-uppercase @error('posicao') is-invalid @enderror">
                             <option value="">Selecione...</option>
-                            @foreach (\App\Enums\Posicao::cases() as $pos)
-                                <option value="{{ $posicaoEnum->value }}" @selected(old('posicao', $jogador->posicao ?? '') == $pos->value)>
+                            @foreach ($posicoes as $pos)
+                                <option value="{{ $pos->value }}" @selected(old('posicao', $jogador->posicao ?? '') == $pos->value)>
                                     {{ $pos->value }}
                                 </option>
                             @endforeach
+
                         </select>
                         @error('posicao')
                             <div class="invalid-feedback font-weight-bold">{{ $message }}</div>

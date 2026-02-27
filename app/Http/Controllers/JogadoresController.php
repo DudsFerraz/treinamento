@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\Jogadores\Posicao;
 use App\Http\Requests\jogadores\StoreJogadorRequest;
 use App\Http\Requests\jogadores\UpdateJogadorRequest;
 use App\Models\Jogador;
@@ -17,7 +18,7 @@ class JogadoresController extends Controller
 
     public function create()
     {
-        return view('jogadores.form');
+        return view('jogadores.form', ['posicoes' => Posicao::cases()]);
     }
 
     public function store(StoreJogadorRequest $request)
