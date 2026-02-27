@@ -5,6 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Jogador;
 use App\Models\User;
+use App\Enums\Posicao;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Jogador>
@@ -22,7 +23,7 @@ class JogadorFactory extends Factory
         return [
             'nome' => $this->faker->name(),
             'time' => $this->faker->company(),
-            'posicao' => $this->faker->randomElement(['GOLEIRO', 'LATERAL', 'ZAGUEIRO', 'VOLANTE', 'MEIA', 'PONTA', 'ATACANTE']),
+            'posicao' => $this->faker->randomElement(Posicao::valores()),
             'numero' => $this->faker->numberBetween(1, 99),
             'created_by' => User::factory(),
             'gols' => $this->faker->numberBetween(0, 1000)

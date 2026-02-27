@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Posicao;
 use Illuminate\Database\Migrations\Migration; 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,7 +17,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('nome');
             $table->string('time');
-            $table->enum('posicao', ['GOLEIRO', 'LATERAL', 'ZAGUEIRO', 'VOLANTE', 'MEIA', 'PONTA', 'ATACANTE']);
+            $table->enum('posicao', Posicao::valores());
             $table->integer('numero');
 
             $table->unsignedBigInteger('created_by')->nullable();

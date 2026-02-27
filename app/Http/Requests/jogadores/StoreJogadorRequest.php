@@ -3,6 +3,8 @@
 namespace App\Http\Requests\jogadores;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+use App\Enums\Posicao;
 
 class StoreJogadorRequest extends FormRequest
 {
@@ -24,7 +26,7 @@ class StoreJogadorRequest extends FormRequest
         return [
             'nome'    => 'required|string|max:255',
             'time'    => 'required|string|max:255',
-            'posicao' => 'required|string|in:GOLEIRO,LATERAL,ZAGUEIRO,VOLANTE,MEIA,PONTA,ATACANTE',
+            'posicao' => ['required', Rule::enum(Posicao::class)],
             'numero'  => 'required|integer|min:1|max:99',
             'gols'   => 'required|integer|min:0'
         ];
