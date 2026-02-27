@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Jogador;
+use App\Models\User;
 
 class JogadorSeeder extends Seeder
 {
@@ -12,12 +12,16 @@ class JogadorSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
-    {
+    {   
+
+        $testUser = User::first() ?? User::factory()->create();
+
         $jogador = [
             'nome' => 'Raphael Veiga',
             'time' => 'Palmeiras',
             'posicao' => 'MEIA',
-            'numero' => 23
+            'numero' => 23,
+            'created_by' => $testUser->id
         ];
         Jogador::create($jogador);
 
@@ -25,7 +29,8 @@ class JogadorSeeder extends Seeder
             'nome' => 'Gustavo Scarpa',
             'time' => 'Palmeiras',
             'posicao' => 'MEIA',
-            'numero' => 14
+            'numero' => 14,
+            'created_by' => $testUser->id
         ];
         Jogador::create($jogador);
 
@@ -33,7 +38,8 @@ class JogadorSeeder extends Seeder
             'nome' => 'Dudu',
             'time' => 'Palmeiras',
             'posicao' => 'PONTA',
-            'numero' => 7
+            'numero' => 7,
+            'created_by' => $testUser->id
         ];
         Jogador::create($jogador);
 

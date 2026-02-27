@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Jogador;
 use App\Http\Requests\jogadores\StoreJogadorRequest;
 use App\Http\Requests\jogadores\UpdateJogadorRequest;
+use App\Models\Jogador;
 
 class JogadoresController extends Controller
 {
     public function index()
     {
-        $jogadores = Jogador::all();
+        $jogadores = Jogador::with('createdBy')->get();
+
         return view('jogadores.index', ['jogadores' => $jogadores]);
     }
 
@@ -22,7 +22,10 @@ class JogadoresController extends Controller
 
     public function store(StoreJogadorRequest $request)
     {
-        $jogador = Jogador::create($request->validated());
+        $dados = $request->validated();
+        $dados['created_by'] = auth()->user()->id;
+        $jogador = Jogador::create($dados);
+
         return redirect()->route('jogadores.show', $jogador)->with('sucesso', 'Jogador criado!');
     }
 
@@ -30,7 +33,6 @@ class JogadoresController extends Controller
     {
         return view('jogadores.show', ['jogador' => $jogador]);
     }
-
 
     public function edit(Jogador $jogador)
     {
@@ -40,12 +42,14 @@ class JogadoresController extends Controller
     public function update(UpdateJogadorRequest $request, Jogador $jogador)
     {
         $jogador->update($request->validated());
+
         return redirect()->route('jogadores.show', $jogador)->with('sucesso', 'Jogador atualizado!');
     }
 
     public function destroy(Jogador $jogador)
     {
         $jogador->delete();
+
         return redirect()->route('jogadores.index')->with('sucesso', 'Jogador deletado!');
     }
 }

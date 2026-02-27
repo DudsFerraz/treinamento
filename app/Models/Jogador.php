@@ -14,9 +14,12 @@ class Jogador extends Model
         'time',
         'posicao',
         'numero',
+        'created_by'
     ];
 
     use HasFactory;
 
-    protected $guarded = ['id'];
+    public function createdBy(){
+        return $this->belongsTo(User::class, "created_by");
+    }
 }

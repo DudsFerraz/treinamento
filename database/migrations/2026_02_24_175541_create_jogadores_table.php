@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('time');
             $table->enum('posicao', ['GOLEIRO', 'LATERAL', 'ZAGUEIRO', 'VOLANTE', 'MEIA', 'PONTA', 'ATACANTE']);
             $table->integer('numero');
+
+            $table->unsignedBigInteger('created_by')->nullable();
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('set null');
         });
     }
 
