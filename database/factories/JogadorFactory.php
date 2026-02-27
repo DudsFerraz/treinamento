@@ -24,7 +24,8 @@ class JogadorFactory extends Factory
             'time' => $this->faker->company(),
             'posicao' => $this->faker->randomElement(['GOLEIRO', 'LATERAL', 'ZAGUEIRO', 'VOLANTE', 'MEIA', 'PONTA', 'ATACANTE']),
             'numero' => $this->faker->numberBetween(1, 99),
-            'created_by' => User::factory()
+            'created_by' => User::factory(),
+            'gols' => $this->faker->numberBetween(0, 1000)
         ];
     }
 }

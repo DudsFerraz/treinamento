@@ -82,6 +82,19 @@
                             <div class="invalid-feedback font-weight-bold">{{ $message }}</div>
                         @enderror
                     </div>
+
+                    {{-- Campo: Gols --}}
+                    <div class="form-group col-md-4 mb-0">
+                        <label for="gols" class="text-muted small font-weight-bold text-uppercase mb-1">Gols</label>
+                        <input type="number" name="gols" id="gols" 
+                               value="{{ old('gols', $jogador->gols ?? '') }}" 
+                               class="form-control form-control-lg text-center font-weight-bold @error('gols') is-invalid @enderror"
+                               placeholder="00">
+                        @error('gols')
+                            <div class="invalid-feedback font-weight-bold">{{ $message }}</div>
+                        @enderror
+                    </div>
+
                 </div>
 
                 {{-- Botão de Salvar --}}

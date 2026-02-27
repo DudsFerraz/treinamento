@@ -14,7 +14,8 @@ class Jogador extends Model
         'time',
         'posicao',
         'numero',
-        'created_by'
+        'created_by',
+        'gols'
     ];
 
     use HasFactory;

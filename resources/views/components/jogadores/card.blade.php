@@ -32,6 +32,11 @@
             <span class="h2 font-weight-bold text-dark mb-0">{{ $jogador->numero }}</span>
         </div>
 
+        <div class="d-flex justify-content-between align-items-center mb-3 pb-3 border-bottom">
+            <span class="text-muted small font-weight-bold text-uppercase">Gols</span>
+            <span class="h2 font-weight-bold text-dark mb-0">{{ $jogador->gols }}</span>
+        </div>
+
         <div class="mt-auto text-center pt-2">
             <span class="text-muted small text-uppercase d-block mb-1">Registrado por:</span>
             <span class="badge badge-light text-secondary border px-2 py-1">

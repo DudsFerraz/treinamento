@@ -26,6 +26,7 @@ class StoreJogadorRequest extends FormRequest
             'time'    => 'required|string|max:255',
             'posicao' => 'required|string|in:GOLEIRO,LATERAL,ZAGUEIRO,VOLANTE,MEIA,PONTA,ATACANTE',
             'numero'  => 'required|integer|min:1|max:99',
+            'gols'   => 'required|integer|min:0'
         ];
     }
 
