@@ -37,7 +37,10 @@ class JogadoresController extends Controller
 
     public function edit(Jogador $jogador)
     {
-        return view('jogadores.form', ['jogador' => $jogador]);
+        return view('jogadores.form', [
+            'jogador' => $jogador,
+            'posicoes' => Posicao::cases(),
+        ]);
     }
 
     public function update(UpdateJogadorRequest $request, Jogador $jogador)
