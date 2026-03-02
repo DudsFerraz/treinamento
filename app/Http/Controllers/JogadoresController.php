@@ -6,12 +6,21 @@ use App\Enums\Jogadores\Posicao;
 use App\Http\Requests\jogadores\StoreJogadorRequest;
 use App\Http\Requests\jogadores\UpdateJogadorRequest;
 use App\Models\Jogador;
+use Illuminate\Http\Request;
 
 class JogadoresController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $jogadores = Jogador::with('createdBy')->get();
+
+        $jogadores = Jogador::with('createdBy')
+            ->when($request->search, function ($query, $search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('nome', 'LIKE', "%{$search}%")
+                        ->orWhere('time', 'LIKE', "%{$search}%");
+                });
+            })
+            ->paginate(4);
 
         return view('jogadores.index', ['jogadores' => $jogadores]);
     }

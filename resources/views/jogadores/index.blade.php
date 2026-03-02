@@ -18,8 +18,22 @@
 
         <div class="text-center mb-5">
             <h1 class="display-4 font-weight-bold text-uppercase text-dark">Elenco de Jogadores</h1>
-            <p class="text-muted lead mt-2">Total de jogadores cadastrados: {{ $jogadores->count() }}</p>
         </div>
+
+        <form method="get" action="{{ route('jogadores.index') }}" class="mb-4">
+            <div class="row">
+                <div class=" col-sm input-group">
+                    <input type="text" class="form-control" name="search" value="{{ request()->search }}">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-success"> Buscar </button>
+                    </span>
+                </div>
+            </div>
+        </form>
+
+        <br>
+
+        {{ $jogadores->appends(request()->query())->links() }}
 
         <div class="row">
             @foreach ($jogadores as $jogador)

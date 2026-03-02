@@ -26,7 +26,6 @@ class Jogador extends Model
         return $this->belongsTo(User::class, 'created_by');
     }
 
-    //CONFERIR SE ISSO TA FUNCIONANDO
     protected function posicao(): Attribute
     {
         return Attribute::make(
