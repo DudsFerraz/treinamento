@@ -37,6 +37,14 @@
             <span class="h2 font-weight-bold text-dark mb-0">{{ $jogador->gols }}</span>
         </div>
 
+        @if ($jogador->picture_path)
+            <img src="{{ asset('storage/' . $jogador->picture_path) }}" alt="Foto do {{ $jogador->nome }}"
+                class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+        @else
+            <img src="https://ui-avatars.com/api/?name={{ urlencode($jogador->nome) }}" alt="Sem foto"
+                class="img-fluid rounded-circle" style="width: 150px; height: 150px;">
+        @endif
+
         <div class="mt-auto text-center pt-2">
             <span class="text-muted small text-uppercase d-block mb-1">Registrado por:</span>
             <span class="badge badge-light text-secondary border px-2 py-1">

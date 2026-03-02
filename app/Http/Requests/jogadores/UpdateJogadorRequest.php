@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\jogadores;
 
+use App\Enums\Jogadores\Posicao;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use App\Enums\Posicao;
 
 class UpdateJogadorRequest extends FormRequest
 {
@@ -24,11 +24,13 @@ class UpdateJogadorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome'    => 'required|string|max:255',
-            'time'    => 'required|string|max:255',
+            'nome' => 'required|string|max:255',
+            'time' => 'required|string|max:255',
             'posicao' => ['required', Rule::enum(Posicao::class)],
-            'numero'  => 'required|integer|min:1|max:99',
-            'gols'   => 'required|integer|min:0'
+            'numero' => 'required|integer|min:1|max:99',
+            'gols' => 'required|integer|min:0',
+
+            'picture' => 'nullable|file|image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
 

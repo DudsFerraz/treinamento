@@ -17,7 +17,6 @@
             </div>
 
             @php
-                // Define a rota de destino (Update ou Store)
                 $actionUrl =
                     isset($jogador) && $jogador->id
                         ? route('jogadores.update', $jogador->id)
@@ -25,7 +24,7 @@
             @endphp
 
             {{-- Início do Formulário --}}
-            <form action="{{ $actionUrl }}" method="POST" class="card-body p-4">
+            <form action="{{ $actionUrl }}" method="POST" enctype="multipart/form-data" class="card-body p-4">
                 @csrf
 
                 @if (isset($jogador) && $jogador->id)
@@ -95,6 +94,13 @@
                         @error('gols')
                             <div class="invalid-feedback font-weight-bold">{{ $message }}</div>
                         @enderror
+                    </div>
+
+                    <div class="form-group col-md-4 mb-0">
+                        <label for="picture" class="text-muted small font-weight-bold text-uppercase mb-1">Foto</label>
+                        @csrf
+                        <input type="file" name="picture" id="picture"
+                            class="form-control-file @error('picture') is-invalid @enderror">
                     </div>
 
                 </div>

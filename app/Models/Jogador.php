@@ -17,6 +17,7 @@ class Jogador extends Model
         'numero',
         'created_by',
         'gols',
+        'picture_path',
     ];
 
     use HasFactory;

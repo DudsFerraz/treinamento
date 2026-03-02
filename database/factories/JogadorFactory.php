@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Jogador;
 use App\Models\User;
-use App\Enums\Posicao;
+use App\Enums\Jogadores\Posicao;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Jogador>

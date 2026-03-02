@@ -34,6 +34,7 @@ class JogadoresController extends Controller
     {
         $dados = $request->validated();
         $dados['created_by'] = auth()->user()->id;
+        $dados['picture_path'] = $request->file('picture')->store('jogadores', 'public');
         $jogador = Jogador::create($dados);
 
         return redirect()->route('jogadores.show', $jogador)->with('sucesso', 'Jogador criado!');
@@ -53,9 +54,13 @@ class JogadoresController extends Controller
     }
 
     public function update(UpdateJogadorRequest $request, Jogador $jogador)
-    {
-        $jogador->update($request->validated());
+    {   
+        $dados = $request->validated();
+        if($request->hasFile('picture')) {
+            $dados['picture_path'] = $request->file('picture')->store('jogadores', 'public');
+        }
 
+        $jogador->update($request->validated());
         return redirect()->route('jogadores.show', $jogador)->with('sucesso', 'Jogador atualizado!');
     }
 
